@@ -178,5 +178,11 @@ namespace AdventureWorks.Web.Controllers
                 System.IO.File.ReadAllBytes(fileOnServer),
                 "application/pdf");
         }
+
+        public IActionResult SearchV2()
+        {
+            return RedirectToAction("Search");
+        }
+
     }
 }
