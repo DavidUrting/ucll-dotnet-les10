@@ -37,6 +37,8 @@ namespace AdventureWorks.Web.Controllers
                 return StatusCode((int)HttpStatusCode.TooManyRequests);
             }
             SearchViewModel vm = new SearchViewModel();
+
+            SetCustomerOfTheDay();
             return View(vm);
         }
 
@@ -78,6 +80,7 @@ namespace AdventureWorks.Web.Controllers
                     LastName = c.LastName,
                     Email = c.Email
                 };
+                SetCustomerOfTheDay();
                 return View(vm);
             }
             else return NotFound();
@@ -85,6 +88,7 @@ namespace AdventureWorks.Web.Controllers
 
         public ActionResult Create()
         {
+            SetCustomerOfTheDay();
             return View();
         }
 
@@ -122,6 +126,7 @@ namespace AdventureWorks.Web.Controllers
                 Email = c.Email
             };
 
+            SetCustomerOfTheDay();
             return View(vm);
         }
 
@@ -158,6 +163,7 @@ namespace AdventureWorks.Web.Controllers
                 Email = c.Email
             };
 
+            SetCustomerOfTheDay();
             return View(vm);
         }
 
@@ -192,5 +198,17 @@ namespace AdventureWorks.Web.Controllers
             return RedirectToAction("Search");
         }
 
+        public IActionResult CustomerOfTheDay()
+        {
+            SetCustomerOfTheDay();
+            return PartialView();
+        }
+
+        private void SetCustomerOfTheDay()
+        {
+            // TODO: data ophalen en viewmodel gebruiken i.p.v. ViewBag
+            ViewBag.FirstName = "Lucy";
+            ViewBag.Description = "...";
+        }
     }
 }
