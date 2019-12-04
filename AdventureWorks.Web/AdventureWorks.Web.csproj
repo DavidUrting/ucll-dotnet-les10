@@ -18,6 +18,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\HumanResources\Data\" />
+    <Folder Include="Areas\HumanResources\Models\" />
+    <Folder Include="Areas\HumanResources\Views\" />
+    <Folder Include="Areas\Production\Controllers\" />
+    <Folder Include="Areas\Production\Data\" />
+    <Folder Include="Areas\Production\Models\" />
+    <Folder Include="Areas\Production\Views\" />
+    <Folder Include="Areas\Purchasing\Controllers\" />
+    <Folder Include="Areas\Purchasing\Data\" />
+    <Folder Include="Areas\Purchasing\Models\" />
+    <Folder Include="Areas\Purchasing\Views\" />
+    <Folder Include="Areas\Sales\Controllers\" />
+    <Folder Include="Areas\Sales\Data\" />
+    <Folder Include="Areas\Sales\Models\" />
+    <Folder Include="Areas\Sales\Views\" />
     <Folder Include="Documents\" />
   </ItemGroup>
 
