@@ -12,7 +12,7 @@
         splitChunks: {
             cacheGroups: {
                 vendor: {
-                    test: /[\\/]node_modules[\\/](jquery)[\\/]/,
+                    test: /[\\/]node_modules[\\/](jquery)[\\/]|[\\/]node_modules[\\/](jquery-validation)[\\/]|[\\/]node_modules[\\/](jquery-validation-unobtrusive)[\\/]/,
                     name: 'vendor',
                     chunks: 'all'
                 }
