@@ -17,4 +17,8 @@
     <ProjectReference Include="..\AdventureWorks.Domain\AdventureWorks.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Documents\" />
+  </ItemGroup>
+
 </Project>

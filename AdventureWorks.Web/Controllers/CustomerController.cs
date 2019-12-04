@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using AdventureWorks.Domain;
 using AdventureWorks.Domain.Models;
 using AdventureWorks.Web.Models;
 using AdventureWorks.Web.Models.WebAPI;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,10 +16,12 @@ namespace AdventureWorks.Web.Controllers
 {
     public class CustomerController : Controller
     {
+        private IWebHostEnvironment _webHostEnvironment;
         private ICustomerManager _manager;
 
-        public CustomerController(ICustomerManager manager)
+        public CustomerController(IWebHostEnvironment webHostEnvironment, ICustomerManager manager)
         {
+            _webHostEnvironment = webHostEnvironment;
             _manager = manager;
         }
 
@@ -164,6 +168,15 @@ namespace AdventureWorks.Web.Controllers
             {
                 return View();
             }
+        }
+
+        public IActionResult BlankOffer()
+        {
+            string fileOnServer = Path.Combine(
+                _webHostEnvironment.ContentRootPath, @"Documents\offer_nl.pdf");
+            return File(
+                System.IO.File.ReadAllBytes(fileOnServer),
+                "application/pdf");
         }
     }
 }
