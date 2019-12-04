@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AdventureWorks.Web.Models
+namespace AdventureWorks.Web.Areas.Sales.Models
 {
     public class CustomerViewModel
     {

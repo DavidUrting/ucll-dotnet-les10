@@ -8,7 +8,7 @@ namespace AdventureWorks.Web.Models
 {
     public class SearchViewModel
     {
-        public string Subtitle { get { return "Zoeken naar klanten"; } }
+        public string Subtitle { get { return "Zoeken"; } }
 
         public SearchQuery Query { get; set; }
     }

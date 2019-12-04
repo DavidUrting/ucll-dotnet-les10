@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text.Json;
-using System.Threading.Tasks;
-using AdventureWorks.Domain;
+﻿using AdventureWorks.Domain;
 using AdventureWorks.Domain.Models;
+using AdventureWorks.Web.Areas.Sales.Models;
 using AdventureWorks.Web.Models;
 using AdventureWorks.Web.Models.WebAPI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using System.Linq;
+using System.Net;
 
-namespace AdventureWorks.Web.Controllers
+namespace AdventureWorks.Web.Areas.Sales.Controllers
 {
+    [Area("Sales")]
     public class CustomerController : Controller
     {
         private const int MAX_REQUESTS_PER_MINUTE = 100;

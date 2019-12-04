@@ -29,10 +29,7 @@
     <Folder Include="Areas\Purchasing\Data\" />
     <Folder Include="Areas\Purchasing\Models\" />
     <Folder Include="Areas\Purchasing\Views\" />
-    <Folder Include="Areas\Sales\Controllers\" />
     <Folder Include="Areas\Sales\Data\" />
-    <Folder Include="Areas\Sales\Models\" />
-    <Folder Include="Areas\Sales\Views\" />
     <Folder Include="Documents\" />
   </ItemGroup>
 
