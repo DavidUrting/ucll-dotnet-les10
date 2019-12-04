@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdventureWorks.Web.Validations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace AdventureWorks.Web.Models.WebAPI
     {
         [Required]
         [StringLength(int.MaxValue, MinimumLength = 3)]
+        [NoCussword]
         public string Keyword { get; set; }
 
         [Range(1, 500)]
