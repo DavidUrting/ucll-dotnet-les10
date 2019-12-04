@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AdventureWorks.Domain;
 using AdventureWorks.Domain.Models;
 using AdventureWorks.Web.Models;
+using AdventureWorks.Web.Models.WebAPI;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,17 +29,28 @@ namespace AdventureWorks.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Search(string keyword)
+        public IActionResult Search(SearchQuery query)
         {
-            var customers = _manager.SearchCustomers(keyword)
-                .Select(c => new CustomerViewModel()
-                {
-                    Id = c.Id,
-                    FirstName = c.FirstName,
-                    LastName = c.LastName,
-                    Email = c.Email
-                });
-            return Json(customers);
+            if (!string.IsNullOrWhiteSpace(query.Keyword)
+                && char.IsDigit(query.Keyword[0]))
+            {
+                ModelState.AddModelError("keyword", "A search keyword should not start with a digit.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                var customers = _manager.SearchCustomers(query.Keyword)
+                    .Take(query.MaxResults)
+                    .Select(c => new CustomerViewModel()
+                    {
+                        Id = c.Id,
+                        FirstName = c.FirstName,
+                        LastName = c.LastName,
+                        Email = c.Email
+                    });
+                return Json(customers);
+            }
+            else return BadRequest(ModelState);
         }
 
         // Tonen van details van een klant

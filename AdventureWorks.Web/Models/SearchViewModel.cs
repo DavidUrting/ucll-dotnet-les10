@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdventureWorks.Web.Models.WebAPI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +10,6 @@ namespace AdventureWorks.Web.Models
     {
         public string Subtitle { get { return "Zoeken naar klanten"; } }
 
-        public string Keyword { get; set; }
+        public SearchQuery Query { get; set; }
     }
-
 }
