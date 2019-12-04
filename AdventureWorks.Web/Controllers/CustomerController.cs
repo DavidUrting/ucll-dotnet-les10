@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
 using AdventureWorks.Domain;
@@ -16,6 +17,8 @@ namespace AdventureWorks.Web.Controllers
 {
     public class CustomerController : Controller
     {
+        private const int MAX_REQUESTS_PER_MINUTE = 100;
+
         private IWebHostEnvironment _webHostEnvironment;
         private ICustomerManager _manager;
 
@@ -28,6 +31,11 @@ namespace AdventureWorks.Web.Controllers
         [Route("zoeken")]
         public IActionResult Search()
         {
+            int requestsPastMinute = 0; // TODO: aantal requests in laatste minuut van huidige user bepalen.
+            if (requestsPastMinute > MAX_REQUESTS_PER_MINUTE)
+            {
+                return StatusCode((int)HttpStatusCode.TooManyRequests);
+            }
             SearchViewModel vm = new SearchViewModel();
             return View(vm);
         }
